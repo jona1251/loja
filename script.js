@@ -115,5 +115,40 @@ function removeITemcart(name){
 
 
 addressiInput.addEventListener("input", function(event){
+    let inputValue = event.target.inputValue
 
+    if(inputValue !== ""){
+        addressiInput.classList.add("border-red-500")
+        addressWarn.classList.add("hidden")
+    }
 })
+
+
+checkoutBtn.addEventListener("click", function(){
+    if(cart.length === 0 ) return
+
+    if(addressiInput.value === ""){
+        addressWarn.classList.remove("hidden")
+        addressiInput.classList.add("border-red-500")
+        return
+    }
+})
+//verifica se esta aberto 
+function checkOpen(){
+    const data = new Date()
+    const hora = data.getHours()
+    return hora >= 17 && hora < 23
+    //true = aberto 
+}
+
+
+const spanintem = getElementById("date-span")
+const isOpen = checkOpen()
+
+if(isOpen){
+    spanintem.classList.remove("bg-red-500")
+    spanintem.classList.add("bg-green-600")
+}else{
+    spanintem.classList.remove("bg-green-600")
+    spanintem.classList.add("bg-red-500")
+}
