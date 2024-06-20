@@ -118,13 +118,21 @@ addressiInput.addEventListener("input", function(event){
     let inputValue = event.target.inputValue
 
     if(inputValue !== ""){
-        addressiInput.classList.add("border-red-500")
+        addressiInput.classList.remove("border-red-500")
         addressWarn.classList.add("hidden")
     }
 })
 
-
+//finalizar pedido
 checkoutBtn.addEventListener("click", function(){
+    /* const isOpen = checkOpen()
+    if(!isOpen){
+        alert("Esta Fechado ")
+        return
+    }
+ */
+
+
     if(cart.length === 0 ) return
 
     if(addressiInput.value === ""){
@@ -132,7 +140,16 @@ checkoutBtn.addEventListener("click", function(){
         addressiInput.classList.add("border-red-500")
         return
     }
-})
+
+    //Enviar o pedido para api whats
+    const cartItems = cart.map((item) => {
+        return
+        ` ${item.name} Quantidade: (${item.quantity}) Preço: R$${item.price} |`
+    }).join("")
+    const message = encodeURIComponent(cartItems)
+    const phone = "11976062197"
+    window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressiInput.value}`, "_blank")
+
 //verifica se esta aberto 
 function checkOpen(){
     const data = new Date()
@@ -142,8 +159,8 @@ function checkOpen(){
 }
 
 
-const spanintem = getElementById("date-span")
-const isOpen = checkOpen()
+ const spanintem = document.getElementById("date-span")
+ const isOpen = checkOpen()
 
 if(isOpen){
     spanintem.classList.remove("bg-red-500")
@@ -151,4 +168,5 @@ if(isOpen){
 }else{
     spanintem.classList.remove("bg-green-600")
     spanintem.classList.add("bg-red-500")
-}
+ }
+})
