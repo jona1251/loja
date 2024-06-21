@@ -125,12 +125,21 @@ addressiInput.addEventListener("input", function(event){
 
 //finalizar pedido
 checkoutBtn.addEventListener("click", function(){
-    /* const isOpen = checkOpen()
+     const isOpen = checkOpen()
     if(!isOpen){
-        alert("Esta Fechado ")
+        Toastify({  text: "ESTA FECHADO ",
+        duration: 3000,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "center", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "#ef4444",
+        },
+    }).showToast()
         return
     }
- */
+ 
 
 
     if(cart.length === 0 ) return
@@ -152,7 +161,8 @@ checkoutBtn.addEventListener("click", function(){
     const phone = "76062197"
 
     window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressiInput.value}`, "_blank")
-
+    cart = []
+    updateCartModal()
 
 })
 
@@ -167,11 +177,10 @@ function checkOpen(){
 
  const spanintem = document.getElementById("date-span")
  const isOpen = checkOpen()
-
-if(isOpen){
+    if(isOpen){
     spanintem.classList.remove("bg-red-500")
     spanintem.classList.add("bg-green-600")
-}else{
+    }else{
     spanintem.classList.remove("bg-green-600")
     spanintem.classList.add("bg-red-500")
- }
+    }
