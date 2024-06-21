@@ -143,12 +143,18 @@ checkoutBtn.addEventListener("click", function(){
 
     //Enviar o pedido para api whats
     const cartItems = cart.map((item) => {
-        return
+        return(
         ` ${item.name} Quantidade: (${item.quantity}) Preço: R$${item.price} |`
+        )
     }).join("")
+
     const message = encodeURIComponent(cartItems)
-    const phone = "97606-2197"
+    const phone = "76062197"
+
     window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressiInput.value}`, "_blank")
+
+
+})
 
 //verifica se esta aberto 
 function checkOpen(){
@@ -169,4 +175,3 @@ if(isOpen){
     spanintem.classList.remove("bg-green-600")
     spanintem.classList.add("bg-red-500")
  }
-})
