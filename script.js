@@ -153,7 +153,7 @@ checkoutBtn.addEventListener("click", function(){
     //Enviar o pedido para api whats
     const cartItems = cart.map((item) => {
         return(
-       `(${item.name}) Quantidade: (${item.quantity}) Preço: (R$${item.price}|)`
+       `(${item.name}) Quantidade: (${item.quantity}) Preço: (R$${item.price})|`
         )
     }).join("")
 
@@ -161,8 +161,7 @@ checkoutBtn.addEventListener("click", function(){
     const phone = "76062197"
      
     window.open(`https://wa.me/${phone}
-    ?text=${message} 
-    Endereço: ${addressiInput.value}`, "_blank")
+    ?text=${message}Endereço: ${addressiInput.value}`, "_blank")
     cart = []
     updateCartModal()
 
